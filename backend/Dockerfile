@@ -15,27 +15,6 @@ RUN curl -SL https://download.pytorch.org/models/resnet152-b121ed2d.pth -o /root
 RUN pip install torch==1.7.1+cpu torchvision==0.8.2+cpu -f https://download.pytorch.org/whl/torch_stable.html
 RUN pip install -v --install-option="--no" --install-option="DLIB_USE_CUDA" --install-option="--no" --install-option="USE_AVX_INSTRUCTIONS" --install-option="--no" --install-option="USE_SSE4_INSTRUCTIONS" dlib
 
-# setup py-bottom-up attention
-WORKDIR /dependencies
-RUN git clone https://github.com/airsplay/py-bottom-up-attention.git && \
-    cd py-bottom-up-attention && \
-    pip install torch torchvision numpy cython opencv-python && \
-    pip install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI' && \
-    pip install 'git+https://github.com/facebookresearch/fvcore.git' && \
-    python setup.py build develop
-
-# setup oscar
-WORKDIR /dependencies
-RUN git clone --recursive https://github.com/eugenekoh/Oscar.git && \
-    cd Oscar && \
-    git checkout sequence-coco && \
-    python setup.py build develop && \
-    pip install -r requirements.txt && \
-    pip install pytorch-transformers==1.0.0
-
-# setup fer
-RUN pip install scikit-image pytorchcv
-
 # actual project
 ARG DEBUG
 WORKDIR /code
