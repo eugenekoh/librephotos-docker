@@ -1,7 +1,7 @@
 FROM python:3.8
 
 # system packages installation
-RUN apt update && apt install -y curl nfs-common cifs-utils libopenblas-dev libmagic1 libboost-all-dev libxrender-dev liblapack-dev git bzip2 cmake build-essential libsm6 libglib2.0-0 libgl1-mesa-glx --no-install-recommends
+RUN apt update && apt install -y curl nfs-common cifs-utils libopenblas-dev libmagic1 libboost-all-dev libxrender-dev liblapack-dev git bzip2 cmake build-essential libsm6 libglib2.0-0 libgl1-mesa-glx python3-opencv --no-install-recommends
 
 # pre trained models download
 WORKDIR /data_models
@@ -18,9 +18,9 @@ RUN pip install -v --install-option="--no" --install-option="DLIB_USE_CUDA" --in
 # actual project
 ARG DEBUG
 WORKDIR /code
-RUN git clone https://github.com/LibrePhotos/librephotos . 
+RUN git clone  https://github.com/eugenekoh/librephotos.git .
 RUN pip install -r requirements.txt
-RUN if [ "$DEBUG" = 1 ] ; then pip install -r -U requirements.dev.txt ;  fi
+RUN if [ "$DEBUG" = 1 ] ; then pip install -r requirements.dev.txt ;  fi
 RUN python -m spacy download en_core_web_sm
 EXPOSE 8001
 
