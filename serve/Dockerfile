@@ -12,6 +12,12 @@ RUN git clone https://github.com/airsplay/py-bottom-up-attention.git && \
     pip install 'git+https://github.com/facebookresearch/fvcore.git' && \
     python setup.py build develop
 
+# install apex
+WORKDIR /dependencies
+RUN git clone https://github.com/NVIDIA/apex.git && \
+    cd apex && \
+    python setup.py install --cuda_ext --cpp_ext
+
 # setup oscar
 WORKDIR /dependencies
 RUN git clone --recursive https://github.com/eugenekoh/Oscar.git && \
