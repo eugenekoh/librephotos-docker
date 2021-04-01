@@ -1,7 +1,7 @@
 FROM python:3.8
 
 RUN apt-get update && \
-    apt-get install -y git python3-opencv
+    apt-get install -y git python3-opencv unzip
 
 # setup py-bottom-up attention
 WORKDIR /dependencies
@@ -26,7 +26,9 @@ RUN git clone https://github.com/eugenekoh/librephotos-serve.git && \
     cd librephotos-serve && \
     pip install -r requirements.txt && \
     wget https://storage.googleapis.com/ntu-rcp/model.tar.gz && \
-    tar -xf model.tar.gz -C pic
+    tar -xf model.tar.gz -C pic && \
+    wget https://biglmdiag.blob.core.windows.net/oscar/exp/coco_caption/base/checkpoint.zip && \
+    unzip checkpoint.zip -d sic
 
 EXPOSE 5000
 CMD ["python", "app.py"]
