@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM pytorch:1.8.1-cuda11.1-cudnn8-devel
 
 RUN apt-get update && \
     apt-get install -y git python3-opencv unzip
@@ -13,6 +13,11 @@ RUN git clone https://github.com/airsplay/py-bottom-up-attention.git && \
     python setup.py build develop
 
 # setup oscar
+WORKDIR /dependencies
+RUN git clone https://github.com/NVIDIA/apex.git && \
+    cd apex && \
+    python setup.py install --cuda_ext --cpp_ext 
+
 WORKDIR /dependencies
 RUN git clone --recursive https://github.com/eugenekoh/Oscar.git && \
     cd Oscar && \

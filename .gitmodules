@@ -1,0 +1,9 @@
+[submodule "librephotos/code/librephotos"]
+	path = librephotos/code/librephotos
+	url = git@github.com:eugenekoh/librephotos.git
+[submodule "librephotos/code/librephotos-frontend"]
+	path = librephotos/code/librephotos-frontend
+	url = git@github.com:eugenekoh/librephotos-frontend.git
+[submodule "librephotos/code/librephotos-serve"]
+	path = librephotos/code/librephotos-serve
+	url = git@github.com:eugenekoh/librephotos-serve.git

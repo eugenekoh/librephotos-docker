@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM pytorch:1.8.1-cuda11.1-cudnn8-devel
 
 # system packages installation
 RUN apt update && apt install -y curl nfs-common cifs-utils libopenblas-dev libmagic1 libboost-all-dev libxrender-dev liblapack-dev git bzip2 cmake build-essential libsm6 libglib2.0-0 libgl1-mesa-glx python3-opencv --no-install-recommends

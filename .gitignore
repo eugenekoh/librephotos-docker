@@ -145,7 +145,6 @@ densecap/data/models/densecap/densecap-pretrained-vgg16.t7
 */*.pkl
 */*/*.pkl
 thumbnails
-media
 samplephotos
 tags
 api/places365/model/
@@ -156,7 +155,6 @@ BatchNorm2d.patch
 AvgPool2d.patch
 ReLU.patch
 run_docker.sh
-logs/
 playground
 api/im2txt/data/
 api/im2txt/models/
@@ -165,9 +163,10 @@ api/im2txt/png/
 api/im2txt/*.tar.gz
 api/places365/*.tar.gz
 *.db
-media*
 protected_media
-librephotos
 vscode/server-extensions
 vscode/server-insiders-extensions
 .idea/*
+*.log
+media/*.jpg
+
