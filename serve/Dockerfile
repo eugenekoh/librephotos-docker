@@ -1,4 +1,4 @@
-FROM pytorch:1.8.1-cuda11.1-cudnn8-devel
+FROM python:3.8
 
 RUN apt-get update && \
     apt-get install -y git python3-opencv unzip
